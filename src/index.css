@@ -1,13 +1,27 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:focus-visible{
+  outline: 1px dotted rgb(48, 48, 48);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-family: 'Lexend Giga', sans-serif;
+}
+
+h2, 
+h3, 
+h4{
+  font-family: 'Lexend Exa', sans-serif;
+}
+
+h5, 
+h6 {
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+span, p {
+  font-family: 'Lato', serif;
 }
