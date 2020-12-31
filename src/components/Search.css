@@ -1,0 +1,16 @@
+.searchContainer {
+  display: flex;
+  gap: 1vw;
+}
+
+.searchTitle{
+  margin-top: 0;
+}
+
+.searchBarContainer{
+  width: 70%;
+}
+
+.searchBar{
+  width: 95%;
+}

@@ -1,0 +1,9 @@
+header{
+    text-align:  center;
+    margin: 5vh 0 calc(5vh + 20px) 0;
+}
+
+.edit-notice {
+    font-family: 'Lato', serif;
+    font-weight: normal;
+}
