@@ -44,4 +44,5 @@ const Questions = () => {
   );
 };
 
+export { objToArray };
 export default Questions;
