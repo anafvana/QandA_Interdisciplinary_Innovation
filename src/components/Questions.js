@@ -1,25 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Entry from "./Entry";
 
-fetch("/entries")
-  .then((res) => res.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error));
+function objToArray(data) {
+  let a = [];
+  data.forEach((element) => {
+    a.push(element.str);
+  });
+  return a;
+}
 
 const Questions = () => {
-  const selectedQs = [
-    { q: "what?", a: "that", kw: ["a", "b"], categories: ["1", "2"] },
-  ];
+  const getData = () => {
+    fetch("/entries")
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((d) => {
+        console.log(d);
+        setData(d);
+      })
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const [data, setData] = useState([]);
+
   return (
     <section name="Questions matching your query">
-      {selectedQs.map((q_and_a) => (
-        <Entry
-          question={q_and_a.q}
-          answer={q_and_a.a}
-          kw={q_and_a.kw}
-          categories={q_and_a.categories}
-        />
-      ))}
+      {data &&
+        data.length >= 0 &&
+        data.map((q_and_a) => (
+          <Entry
+            question={q_and_a.question}
+            answer={q_and_a.answer}
+            kw={objToArray(q_and_a.keywords)}
+            cats={objToArray(q_and_a.categories)}
+          />
+        ))}
     </section>
   );
 };

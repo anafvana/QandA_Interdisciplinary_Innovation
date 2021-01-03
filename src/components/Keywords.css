@@ -5,3 +5,8 @@
   padding: 3px 5px;
   font-size: 0.8rem;
 }
+
+.keywordContainer {
+  margin-top: 5px;
+  margin-bottom: calc(10px + 1.5vh);
+}

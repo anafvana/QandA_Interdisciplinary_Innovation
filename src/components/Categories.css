@@ -1,0 +1,12 @@
+.category {
+  display: inline-block;
+  background-color: rgb(235, 235, 235);
+  padding: 3px 5px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}
+
+.categoriesContainer {
+  margin: 5px;
+  text-align: center;
+}

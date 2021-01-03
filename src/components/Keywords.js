@@ -6,7 +6,7 @@ const Keywords = (props) => {
   return (
     <div>
       <h6 className="propTitle">Keywords:</h6>
-      <div>
+      <div className="keywordContainer">
         {props.kw.map((data) => (
           <div className="keyword">{data}</div>
         ))}
