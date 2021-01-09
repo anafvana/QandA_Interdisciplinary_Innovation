@@ -1,18 +1,24 @@
-//import './CatSelector.css'
+import "./CatSelector.css";
+
+import React from "react";
+import Select from "react-select";
 
 import { useEffect, useState } from "react";
-import { objToArray } from "./Questions";
+import {
+  objToArray,
+  fetchLabelValue,
+  selectEntriesCategory,
+} from "./dataHandling";
 
-const CatSelector = () => {
+const CatSelector = (props) => {
   const getData = () => {
     fetch("/cats")
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((d) => {
         d = objToArray(d);
-        console.log(d);
+        d.sort();
         setData(d);
       })
       .catch((error) => console.log(error));
@@ -24,16 +30,18 @@ const CatSelector = () => {
   const [data, setData] = useState([]);
 
   return (
-    <div>
+    <div className="catSelectorContainer">
       <label htmlFor="categories" className="propTitle">
         Choose a category
       </label>
       <br></br>
-      <select name="categories" id="cat">
-        {data &&
-          data.length >= 0 &&
-          data.map((c) => <option value={c}>{c}</option>)}
-      </select>
+      <Select
+        placeholder="All categories"
+        options={data && data.length >= 0 && fetchLabelValue(data)}
+        onChange={(c) =>
+          props.entrySelector(selectEntriesCategory(props.allEntries, c.label))
+        }
+      />
     </div>
   );
 };
