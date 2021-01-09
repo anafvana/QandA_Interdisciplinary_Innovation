@@ -1,3 +1,8 @@
 article {
-    border-bottom: solid rgb(160, 160, 160) 2px;
+  border-bottom: solid rgb(160, 160, 160) 2px;
+}
+
+.questWrapper {
+  display: flex;
+  gap: 0.7vw;
 }
