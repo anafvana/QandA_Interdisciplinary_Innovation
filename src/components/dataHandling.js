@@ -76,28 +76,21 @@ function filterByKeywords(selectedEntries, keywordsList) {
 }
 export { filterByKeywords };
 
-/* //Updates keyword list (adds or removes)
-function updateKeywords(selectedKeywords, setKeywords, kw) {
-  console.log(kw);
-  if (checkForKw(selectedKeywords, kw)) {
-    delElem(selectedKeywords, kw);
-  } else {
-    selectedKeywords.push(kw);
-    setKeywords(selectedKeywords);
-  }
+//Updates keyword list and refreshes component
+function updateKeywords(
+  keywordList,
+  entrySelector,
+  setKeywords,
+  selectedEntries,
+  selectedKeywords,
+  selectedCategory
+) {
+  setKeywords(keywordList);
+  entrySelector(
+    selectEntriesCategory(selectedEntries, selectedKeywords, selectedCategory)
+  );
 }
 export { updateKeywords };
-
-//Check if keyword is in list
-function checkForKw(selectedKeywords, kw) {
-  let res = false;
-  selectedKeywords.forEach((element) => {
-    if (element === kw) {
-      res = true;
-    }
-  });
-  return res;
-} */
 
 //Delete element from array (of keywords or categories)
 function delElem(array, element) {

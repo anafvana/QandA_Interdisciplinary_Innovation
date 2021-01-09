@@ -8,6 +8,7 @@ import {
   objToArray,
   fetchLabelValue,
   selectEntriesCategory,
+  updateKeywords,
 } from "./dataHandling";
 
 const KwSelector = (props) => {
@@ -40,14 +41,13 @@ const KwSelector = (props) => {
         isMulti
         options={data && data.length >= 0 && fetchLabelValue(data)}
         onChange={(c) =>
-          console.log(c) &&
-          props.setKeywords(c) &&
-          props.entrySelector(
-            selectEntriesCategory(
-              props.selectedEntries,
-              props.selectedKeywords,
-              props.selectedCategory
-            )
+          updateKeywords(
+            c,
+            props.entrySelector,
+            props.setKeywords,
+            props.selectedEntries,
+            props.selectedKeywords,
+            props.selectedCategory
           )
         }
       />
