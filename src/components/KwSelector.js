@@ -1,4 +1,4 @@
-import "./CatSelector.css";
+//import "./KwSelector.css";
 
 import React from "react";
 import Select from "react-select";
@@ -10,15 +10,16 @@ import {
   selectEntriesCategory,
 } from "./dataHandling";
 
-const CatSelector = (props) => {
+const KwSelector = (props) => {
   const getData = () => {
-    fetch("/cats")
+    fetch("/kws")
       .then((res) => {
         return res.json();
       })
       .then((d) => {
         d = objToArray(d);
         d.sort();
+        console.log(d);
         setData(d);
       })
       .catch((error) => console.log(error));
@@ -30,20 +31,22 @@ const CatSelector = (props) => {
   const [data, setData] = useState([]);
 
   return (
-    <div className="catSelectorContainer">
+    <div className="keywordSelectorContainer">
       <label htmlFor="categories" className="propTitle">
-        Choose a category
+        Choose keywords
       </label>
       <br></br>
       <Select
-        placeholder="All categories"
+        isMulti
         options={data && data.length >= 0 && fetchLabelValue(data)}
         onChange={(c) =>
+          console.log(c) &&
+          props.setKeywords(c) &&
           props.entrySelector(
             selectEntriesCategory(
-              props.allEntries,
+              props.selectedEntries,
               props.selectedKeywords,
-              c.label
+              props.selectedCategory
             )
           )
         }
@@ -52,4 +55,4 @@ const CatSelector = (props) => {
   );
 };
 
-export default CatSelector;
+export default KwSelector;

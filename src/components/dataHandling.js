@@ -17,18 +17,29 @@ function fetchLabelValue(data) {
 export { fetchLabelValue };
 
 //Determines whether category is present in an entry
-function categoryIsPresent(categoryName, entry) {
+function categoryIsPresent(cat, entry) {
   let res = false;
   entry.categories.forEach((c) => {
-    if (categoryName === c.str) {
+    if (cat === c.str) {
       res = true;
     }
   });
   return res;
 }
 
-//Selects all entries with determined category
-function selectEntriesCategory(allEntries, categoryName) {
+//Determines whether keyword is present in an entry
+function keywordIsPresent(kw, entry) {
+  let res = false;
+  entry.keywords.forEach((c) => {
+    if (kw === c.str) {
+      res = true;
+    }
+  });
+  return res;
+}
+
+//Selects all entries with determined category and keywords
+function selectEntriesCategory(allEntries, keywordlist, categoryName) {
   let list = [];
   if (categoryName === "All categories") {
     list = allEntries;
@@ -41,6 +52,60 @@ function selectEntriesCategory(allEntries, categoryName) {
       return list;
     });
   }
+
+  if (keywordlist != null && keywordlist.length > 0) {
+    console.log("keywords are here");
+    list = filterByKeywords(list, keywordlist);
+  }
+
   return list;
 }
 export { selectEntriesCategory };
+
+//Selects all entries with determined keyword
+function filterByKeywords(selectedEntries, keywordsList) {
+  selectedEntries.map((entry) => {
+    keywordsList.forEach((kw) => {
+      let isPresent = keywordIsPresent(kw, entry);
+      if (!isPresent) {
+        delElem(selectedEntries, kw);
+      }
+    });
+    return selectedEntries;
+  });
+}
+export { filterByKeywords };
+
+/* //Updates keyword list (adds or removes)
+function updateKeywords(selectedKeywords, setKeywords, kw) {
+  console.log(kw);
+  if (checkForKw(selectedKeywords, kw)) {
+    delElem(selectedKeywords, kw);
+  } else {
+    selectedKeywords.push(kw);
+    setKeywords(selectedKeywords);
+  }
+}
+export { updateKeywords };
+
+//Check if keyword is in list
+function checkForKw(selectedKeywords, kw) {
+  let res = false;
+  selectedKeywords.forEach((element) => {
+    if (element === kw) {
+      res = true;
+    }
+  });
+  return res;
+} */
+
+//Delete element from array (of keywords or categories)
+function delElem(array, element) {
+  if (array != null && array.length > 0) {
+    for (let i = array.length - 1; i >= 0; i--) {
+      if (array[i] === element) {
+        array = array.splice[i];
+      }
+    }
+  }
+}

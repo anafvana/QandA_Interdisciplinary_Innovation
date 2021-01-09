@@ -7,10 +7,6 @@
   margin-top: 0;
 }
 
-.searchBarContainer {
+.keywordSelectorContainer {
   width: 75%;
-}
-
-.searchBar {
-  width: 95%;
 }

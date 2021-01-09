@@ -25,6 +25,8 @@ function App() {
   const [data, setData] = useState([]);
 
   const [selectedEntries, entrySelector] = useState([]);
+  const [selectedKeywords, setKeywords] = useState([]);
+  const [selectedCategory, setCategory] = useState(null);
 
   /* console.log("All entries:");
   console.log(data);
@@ -40,6 +42,10 @@ function App() {
           allEntries={data}
           selectedEntries={selectedEntries}
           entrySelector={entrySelector}
+          selectedCategory={selectedCategory}
+          setCategory={setCategory}
+          selectedKeywords={selectedKeywords}
+          setKeywords={setKeywords}
         />
         <Entries data={selectedEntries} />
       </main>
