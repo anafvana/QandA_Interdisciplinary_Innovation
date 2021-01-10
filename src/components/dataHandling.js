@@ -27,13 +27,32 @@ function categoryIsPresent(cat, entry) {
   return res;
 }
 
-//Determines whether keyword is present in an entry
-function keywordIsPresent(kw, entry) {
+//Determines whether an entry posesses ANY of the selected keywords
+function anyKeywordsArePresent(kwList, entry) {
   let res = false;
-  entry.keywords.forEach((c) => {
-    if (kw === c.str) {
-      res = true;
-    }
+  kwList.forEach((kw) => {
+    console.log(entry.keywords);
+    entry.keywords.forEach((c) => {
+      if (kw === c.str) {
+        res = true;
+      }
+    });
+  });
+  return res;
+}
+
+//Determines whether an entry posesses ALL of the selected keywords
+function allKeywordsArePresent(kwList, entry) {
+  let res = true;
+  kwList.forEach((kw) => {
+    let temp = false;
+    console.log(entry.keywords);
+    entry.keywords.forEach((c) => {
+      if (kw.label === c.str) {
+        temp = true;
+      }
+    });
+    res = res * temp;
   });
   return res;
 }
@@ -63,20 +82,10 @@ function selectEntriesCategory(allEntries, keywordlist, categoryName) {
 }
 export { selectEntriesCategory };
 
-//Selects all entries with determined keyword
+//Filters list of entries according to keyword list
 function filterByKeywords(selectedEntries, keywordsList) {
   let list = deepCopyObject(selectedEntries);
-  list.forEach((entry) => {
-    keywordsList.forEach((kw) => {
-      let isPresent = keywordIsPresent(kw.label, entry);
-      if (!isPresent) {
-        list = delElem(list, entry);
-      }
-    });
-    console.log("in filterByKeywords");
-    console.log(list);
-    return list;
-  });
+  list = list.filter((entry) => allKeywordsArePresent(keywordsList, entry));
   return list;
 }
 export { filterByKeywords };
@@ -97,18 +106,6 @@ function updateKeywords(
   console.log("done with entry selector");
 }
 export { updateKeywords };
-
-//Delete element from array (of keywords or categories)
-function delElem(array, element) {
-  if (array != null && array.length > 0) {
-    for (let i = array.length - 1; i >= 0; i--) {
-      if (array[i] === element) {
-        array.splice(i, 1);
-      }
-    }
-  }
-  return array;
-}
 
 //Creates deep copy of object/array
 function deepCopyObject(inObj) {

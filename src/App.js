@@ -10,7 +10,7 @@ function App() {
   const getData = () => {
     fetch("/entries")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         return res.json();
       })
       .then((d) => {
@@ -28,10 +28,10 @@ function App() {
   const [selectedKeywords, setKeywords] = useState([]);
   const [selectedCategory, setCategory] = useState(null);
 
-  console.log("All entries:");
+  /* console.log("All entries:");
   console.log(data);
   console.log("Selected entries: ");
-  console.log(selectedEntries);
+  console.log(selectedEntries); */
 
   return (
     <div className="App">
