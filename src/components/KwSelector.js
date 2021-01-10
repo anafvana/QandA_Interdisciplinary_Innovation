@@ -4,12 +4,7 @@ import React from "react";
 import Select from "react-select";
 
 import { useEffect, useState } from "react";
-import {
-  objToArray,
-  fetchLabelValue,
-  selectEntriesCategory,
-  updateKeywords,
-} from "./dataHandling";
+import { objToArray, fetchLabelValue, updateKeywords } from "./dataHandling";
 
 const KwSelector = (props) => {
   const getData = () => {
@@ -45,8 +40,7 @@ const KwSelector = (props) => {
             c,
             props.entrySelector,
             props.setKeywords,
-            props.selectedEntries,
-            props.selectedKeywords,
+            props.allEntries,
             props.selectedCategory
           )
         }

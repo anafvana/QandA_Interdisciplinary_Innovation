@@ -35,13 +35,16 @@ function keywordIsPresent(kw, entry) {
       res = true;
     }
   });
+  console.log(entry.id);
+  console.log(res);
   return res;
 }
 
 //Selects all entries with determined category and keywords
 function selectEntriesCategory(allEntries, keywordlist, categoryName) {
   let list = [];
-  if (categoryName === "All categories") {
+  console.log(categoryName);
+  if (categoryName === "All categories" || categoryName == null) {
     list = allEntries;
   } else {
     allEntries.map((entry) => {
@@ -55,6 +58,7 @@ function selectEntriesCategory(allEntries, keywordlist, categoryName) {
 
   if (keywordlist != null && keywordlist.length > 0) {
     console.log("keywords are here");
+    console.log(keywordlist);
     list = filterByKeywords(list, keywordlist);
   }
 
@@ -64,15 +68,18 @@ export { selectEntriesCategory };
 
 //Selects all entries with determined keyword
 function filterByKeywords(selectedEntries, keywordsList) {
-  selectedEntries.map((entry) => {
+  selectedEntries.forEach((entry) => {
     keywordsList.forEach((kw) => {
-      let isPresent = keywordIsPresent(kw, entry);
+      let isPresent = keywordIsPresent(kw.label, entry);
       if (!isPresent) {
-        delElem(selectedEntries, kw);
+        selectedEntries = delElem(selectedEntries, entry);
       }
     });
+    console.log("in filterByKeywords");
+    console.log(selectedEntries);
     return selectedEntries;
   });
+  return selectedEntries;
 }
 export { filterByKeywords };
 
@@ -82,13 +89,13 @@ function updateKeywords(
   entrySelector,
   setKeywords,
   selectedEntries,
-  selectedKeywords,
   selectedCategory
 ) {
   setKeywords(keywordList);
   entrySelector(
-    selectEntriesCategory(selectedEntries, selectedKeywords, selectedCategory)
+    selectEntriesCategory(selectedEntries, keywordList, selectedCategory)
   );
+  console.log("done with entry selector");
 }
 export { updateKeywords };
 
@@ -97,8 +104,9 @@ function delElem(array, element) {
   if (array != null && array.length > 0) {
     for (let i = array.length - 1; i >= 0; i--) {
       if (array[i] === element) {
-        array = array.splice[i];
+        array.splice(i, 1);
       }
     }
   }
+  return array;
 }

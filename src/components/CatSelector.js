@@ -37,6 +37,7 @@ const CatSelector = (props) => {
       <br></br>
       <Select
         placeholder="All categories"
+        defaultValue="All categories"
         options={data && data.length >= 0 && fetchLabelValue(data)}
         onChange={(c) =>
           props.entrySelector(
