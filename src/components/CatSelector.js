@@ -12,7 +12,7 @@ import {
 
 const CatSelector = (props) => {
   const getCatData = () => {
-    fetch("/cats")
+    fetch("157.245.65.5:1323/cats")
       .then((res) => {
         return res.json();
       })

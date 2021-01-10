@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const getData = () => {
-    fetch("/entries")
+    fetch("157.245.65.5:1323/entries")
       .then((res) => {
         //console.log(res);
         return res.json();
