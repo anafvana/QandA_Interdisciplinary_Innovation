@@ -35,22 +35,20 @@ function keywordIsPresent(kw, entry) {
       res = true;
     }
   });
-  console.log(entry.id);
-  console.log(res);
   return res;
 }
 
 //Selects all entries with determined category and keywords
 function selectEntriesCategory(allEntries, keywordlist, categoryName) {
   let list = [];
-  console.log(categoryName);
+  console.log("selectEntriesCategory: allEntries length: " + allEntries.length);
   if (categoryName === "All categories" || categoryName == null) {
-    list = allEntries;
+    list = deepCopyObject(allEntries);
   } else {
     allEntries.map((entry) => {
       let ispresent = categoryIsPresent(categoryName, entry);
       if (ispresent) {
-        list.push(entry);
+        list.push(deepCopyObject(entry));
       }
       return list;
     });
@@ -58,7 +56,6 @@ function selectEntriesCategory(allEntries, keywordlist, categoryName) {
 
   if (keywordlist != null && keywordlist.length > 0) {
     console.log("keywords are here");
-    console.log(keywordlist);
     list = filterByKeywords(list, keywordlist);
   }
 
@@ -68,18 +65,19 @@ export { selectEntriesCategory };
 
 //Selects all entries with determined keyword
 function filterByKeywords(selectedEntries, keywordsList) {
-  selectedEntries.forEach((entry) => {
+  let list = deepCopyObject(selectedEntries);
+  list.forEach((entry) => {
     keywordsList.forEach((kw) => {
       let isPresent = keywordIsPresent(kw.label, entry);
       if (!isPresent) {
-        selectedEntries = delElem(selectedEntries, entry);
+        list = delElem(list, entry);
       }
     });
     console.log("in filterByKeywords");
-    console.log(selectedEntries);
-    return selectedEntries;
+    console.log(list);
+    return list;
   });
-  return selectedEntries;
+  return list;
 }
 export { filterByKeywords };
 
@@ -88,12 +86,13 @@ function updateKeywords(
   keywordList,
   entrySelector,
   setKeywords,
-  selectedEntries,
+  allEntries,
   selectedCategory
 ) {
+  console.log("updateKeywords: allEntries length: " + allEntries.length);
   setKeywords(keywordList);
   entrySelector(
-    selectEntriesCategory(selectedEntries, keywordList, selectedCategory)
+    selectEntriesCategory(allEntries, keywordList, selectedCategory)
   );
   console.log("done with entry selector");
 }
@@ -109,4 +108,20 @@ function delElem(array, element) {
     }
   }
   return array;
+}
+
+//Creates deep copy of object/array
+function deepCopyObject(inObj) {
+  if (!inObj) {
+    return inObj;
+  }
+
+  let v;
+  let outObj = Array.isArray(inObj) ? [] : {};
+  for (const i in inObj) {
+    v = inObj[i];
+    outObj[i] = typeof v === "object" ? deepCopyObject(v) : v;
+  }
+
+  return outObj;
 }

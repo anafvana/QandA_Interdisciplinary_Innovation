@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { objToArray, fetchLabelValue, updateKeywords } from "./dataHandling";
 
 const KwSelector = (props) => {
-  const getData = () => {
+  const getKwData = () => {
     fetch("/kws")
       .then((res) => {
         return res.json();
@@ -16,15 +16,15 @@ const KwSelector = (props) => {
         d = objToArray(d);
         d.sort();
         console.log(d);
-        setData(d);
+        setKwData(d);
       })
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    getData();
+    getKwData();
   }, []);
 
-  const [data, setData] = useState([]);
+  const [kwData, setKwData] = useState([]);
 
   return (
     <div className="keywordSelectorContainer">
@@ -34,7 +34,7 @@ const KwSelector = (props) => {
       <br></br>
       <Select
         isMulti
-        options={data && data.length >= 0 && fetchLabelValue(data)}
+        options={kwData && kwData.length >= 0 && fetchLabelValue(kwData)}
         onChange={(c) =>
           updateKeywords(
             c,

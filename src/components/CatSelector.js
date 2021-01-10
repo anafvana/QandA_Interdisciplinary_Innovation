@@ -11,7 +11,7 @@ import {
 } from "./dataHandling";
 
 const CatSelector = (props) => {
-  const getData = () => {
+  const getCatData = () => {
     fetch("/cats")
       .then((res) => {
         return res.json();
@@ -19,15 +19,15 @@ const CatSelector = (props) => {
       .then((d) => {
         d = objToArray(d);
         d.sort();
-        setData(d);
+        setCatData(d);
       })
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    getData();
+    getCatData();
   }, []);
 
-  const [data, setData] = useState([]);
+  const [catData, setCatData] = useState([]);
 
   return (
     <div className="catSelectorContainer">
@@ -38,7 +38,7 @@ const CatSelector = (props) => {
       <Select
         placeholder="All categories"
         defaultValue="All categories"
-        options={data && data.length >= 0 && fetchLabelValue(data)}
+        options={catData && catData.length >= 0 && fetchLabelValue(catData)}
         onChange={(c) =>
           props.entrySelector(
             selectEntriesCategory(

@@ -28,11 +28,10 @@ function App() {
   const [selectedKeywords, setKeywords] = useState([]);
   const [selectedCategory, setCategory] = useState(null);
 
-  /* console.log("All entries:");
+  console.log("All entries:");
   console.log(data);
   console.log("Selected entries: ");
   console.log(selectedEntries);
- */
 
   return (
     <div className="App">
@@ -40,7 +39,6 @@ function App() {
       <main>
         <Search
           allEntries={data}
-          selectedEntries={selectedEntries}
           entrySelector={entrySelector}
           selectedCategory={selectedCategory}
           setCategory={setCategory}
