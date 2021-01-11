@@ -8,7 +8,7 @@ import { objToArray, fetchLabelValue, updateKeywords } from "./dataHandling";
 
 const KwSelector = (props) => {
   const getKwData = () => {
-    fetch("http://157.245.65.5:1323/kws")
+    fetch("https://ingrids.space:1323/kws")
       .then((res) => {
         return res.json();
       })
