@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/QandA_Interdisciplinary_Innovation/static/css/main.17ea5654.chunk.css",
-    "main.js": "/QandA_Interdisciplinary_Innovation/static/js/main.6528921e.chunk.js",
-    "main.js.map": "/QandA_Interdisciplinary_Innovation/static/js/main.6528921e.chunk.js.map",
+    "main.js": "/QandA_Interdisciplinary_Innovation/static/js/main.2c88db1b.chunk.js",
+    "main.js.map": "/QandA_Interdisciplinary_Innovation/static/js/main.2c88db1b.chunk.js.map",
     "runtime-main.js": "/QandA_Interdisciplinary_Innovation/static/js/runtime-main.141dc529.js",
     "runtime-main.js.map": "/QandA_Interdisciplinary_Innovation/static/js/runtime-main.141dc529.js.map",
     "static/js/2.cb0063f3.chunk.js": "/QandA_Interdisciplinary_Innovation/static/js/2.cb0063f3.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.141dc529.js",
     "static/js/2.cb0063f3.chunk.js",
     "static/css/main.17ea5654.chunk.css",
-    "static/js/main.6528921e.chunk.js"
+    "static/js/main.2c88db1b.chunk.js"
   ]
 }
