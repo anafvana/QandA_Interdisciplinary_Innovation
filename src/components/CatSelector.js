@@ -12,7 +12,7 @@ import {
 
 const CatSelector = (props) => {
   const getCatData = () => {
-    fetch("https://ingrids.space:1323/cats")
+    fetch("https://ingrids.space/cats")
       .then((res) => {
         return res.json();
       })
