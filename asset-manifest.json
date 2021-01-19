@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/QandA_Interdisciplinary_Innovation/static/css/main.c79a121a.chunk.css",
-    "main.js": "/QandA_Interdisciplinary_Innovation/static/js/main.07b33415.chunk.js",
-    "main.js.map": "/QandA_Interdisciplinary_Innovation/static/js/main.07b33415.chunk.js.map",
+    "main.css": "/QandA_Interdisciplinary_Innovation/static/css/main.17ea5654.chunk.css",
+    "main.js": "/QandA_Interdisciplinary_Innovation/static/js/main.2c88db1b.chunk.js",
+    "main.js.map": "/QandA_Interdisciplinary_Innovation/static/js/main.2c88db1b.chunk.js.map",
     "runtime-main.js": "/QandA_Interdisciplinary_Innovation/static/js/runtime-main.141dc529.js",
     "runtime-main.js.map": "/QandA_Interdisciplinary_Innovation/static/js/runtime-main.141dc529.js.map",
     "static/js/2.cb0063f3.chunk.js": "/QandA_Interdisciplinary_Innovation/static/js/2.cb0063f3.chunk.js",
     "static/js/2.cb0063f3.chunk.js.map": "/QandA_Interdisciplinary_Innovation/static/js/2.cb0063f3.chunk.js.map",
     "index.html": "/QandA_Interdisciplinary_Innovation/index.html",
-    "static/css/main.c79a121a.chunk.css.map": "/QandA_Interdisciplinary_Innovation/static/css/main.c79a121a.chunk.css.map",
+    "static/css/main.17ea5654.chunk.css.map": "/QandA_Interdisciplinary_Innovation/static/css/main.17ea5654.chunk.css.map",
     "static/js/2.cb0063f3.chunk.js.LICENSE.txt": "/QandA_Interdisciplinary_Innovation/static/js/2.cb0063f3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.141dc529.js",
     "static/js/2.cb0063f3.chunk.js",
-    "static/css/main.c79a121a.chunk.css",
-    "static/js/main.07b33415.chunk.js"
+    "static/css/main.17ea5654.chunk.css",
+    "static/js/main.2c88db1b.chunk.js"
   ]
 }
